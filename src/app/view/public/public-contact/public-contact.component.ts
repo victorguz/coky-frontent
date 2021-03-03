@@ -36,8 +36,8 @@ export class PublicContactComponent implements OnInit {
   }
 
   async ngOnInit() {
-    let hola = await this.contactService.all()
-    console.log(hola);
+    // let hola = await this.contactService.all()
+    // console.log(hola);
   }
 
   showMessage(message: string, action: string, type = "danger", time = 2000, func = null) {
