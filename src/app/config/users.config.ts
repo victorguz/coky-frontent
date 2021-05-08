@@ -1,5 +1,5 @@
 
-export module UsersConfigModule {
+export module UsersModule {
 
     /**
      * The User Roles Constants thats enable roles to access to de 
@@ -95,4 +95,7 @@ export module UsersConfigModule {
         }
         return found;
     }
+
+
+    export function current() { }
 }

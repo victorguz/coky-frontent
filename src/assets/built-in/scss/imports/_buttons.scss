@@ -1,0 +1,82 @@
+button,
+.btn,
+.button,
+.label {
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px;
+    border-radius: $button-radius !important;
+
+    &.white,
+    &.primary,
+    &.secondary,
+    &.success,
+    &.danger,
+    &.alert,
+    &.dark,
+    &.gray,
+    &.info {
+        color: white !important;
+        margin: 2px;
+    }
+
+
+    &.white {
+        background-color: white !important;
+        color: $dark-color !important;
+        border: 1px solid $dark-color-hover !important;
+    }
+
+    &.primary {
+        background-color: $primary-color !important;
+
+    }
+
+    &.secondary {
+        background-color: $secondary-color !important;
+
+    }
+
+    &.alert {
+        background-color: $alert-color !important;
+
+    }
+
+    &.success {
+        background-color: $success-color !important;
+
+    }
+
+    &.danger {
+        background-color: $danger-color !important;
+
+    }
+
+    &.dark {
+
+        background-color: $dark-color !important;
+
+    }
+
+    &.gray {
+        background-color: $gray-color !important;
+        color: gray !important;
+
+    }
+
+    &.info {
+        background-color: $info-color !important;
+
+    }
+
+    .icon {
+        padding: 0 !important;
+    }
+
+    .ionicon {
+        width: 1.5em !important;
+        height: 1.5em !important;
+    }
+}

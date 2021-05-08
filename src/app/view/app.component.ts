@@ -1,4 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { Helpers } from '../core/helpers';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +9,10 @@ import { Component, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
-  title = 'coky-front';
+
+  constructor(private docTitle: Title, private helpers: Helpers) {
+    docTitle.setTitle(helpers.getTitle());
+  }
+
+
 }

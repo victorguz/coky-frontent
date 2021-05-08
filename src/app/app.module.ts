@@ -8,6 +8,7 @@ import { ConfigRoutingModule } from './config/routing.config';
 
 
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,45 +22,19 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppComponent } from './view/app.component';
-import { AdminCarouselBrandComponent } from './view/admin/imports/admin-carousel-brand/admin-carousel-brand.component';
-import { AdminUsersComponent } from './view/admin/users/admin-users/admin-users.component';
-import { AdminNotFoundComponent } from './view/admin/admin-not-found/admin-not-found.component';
-import { AdminNavbarComponent } from './view/admin/layout/admin-navbar/admin-navbar.component';
-import { AdminSidebarComponent } from './view/admin/layout/admin-sidebar/admin-sidebar.component';
-import { AdminFooterComponent } from './view/admin/layout/admin-footer/admin-footer.component';
-import { AdminLoginComponent } from './view/admin/users/admin-login/admin-login.component';
-import { AdminRegisterComponent } from './view/admin/users/admin-register/admin-register.component';
-import { AdminHomeComponent } from './view/admin/admin-home/admin-home.component';
-import { PublicHomeComponent } from './view/public/public-home/public-home.component';
-import { PublicNavbarComponent } from './view/public/layout/public-navbar/public-navbar.component';
-import { PublicFooterComponent } from './view/public/layout/public-footer/public-footer.component';
-import { PublicCarouselComponent } from './view/public/import/public-carousel/public-carousel.component';
-import { PublicAboutComponent } from './view/public/public-about/public-about.component';
-import { PublicServicesComponent } from './view/public/public-services/public-services.component';
-import { PublicContactComponent } from './view/public/public-contact/public-contact.component';
-import { PublicPlansComponent } from './view/public/public-plans/public-plans.component';
 import { CookieService } from 'ngx-cookie-service';
+import { LoginComponent } from './view/users/login/login.component';
+import { NotFoundComponent } from './view/default/not-found/not-found.component';
+import { ForbiddenComponent } from './view/default/forbidden/forbidden.component';
+import { LoginHelpComponent } from './view/users/login-help/login-help.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminUsersComponent,
-    AdminHomeComponent,
-    AdminNotFoundComponent,
-    AdminNavbarComponent,
-    AdminSidebarComponent,
-    AdminFooterComponent,
-    AdminLoginComponent,
-    AdminRegisterComponent,
-    AdminCarouselBrandComponent,
-    PublicHomeComponent,
-    PublicNavbarComponent,
-    PublicFooterComponent,
-    PublicCarouselComponent,
-    PublicAboutComponent,
-    PublicServicesComponent,
-    PublicContactComponent,
-    PublicPlansComponent,
+    LoginComponent,
+    NotFoundComponent,
+    ForbiddenComponent,
+    LoginHelpComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -85,6 +60,7 @@ import { CookieService } from 'ngx-cookie-service';
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
