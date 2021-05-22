@@ -1,78 +1,81 @@
 <div class="coky-container">
-    <div class="login">
-        <section class="container backgrounds-container">
-            <div class="overlay">
-                <div class="gradient"></div>
-            </div>
-        </section>
+  <div class="login">
+    <section class="container backgrounds-container">
+      <div class="overlay">
+        <div class="gradient"></div>
+      </div>
+    </section>
 
-        <div class="login-container">
+    <div class="login-container">
 
-            <div class="desc">
-                <a href="" class="logo" vanilla-tilt data-tilt-max="30" data-tilt-scale="1.4" ilt-speed="300"
-                    data-tilt-perspective="500">
-                    <img src="assets/built-in/images/favicon.png" alt="logo ">
-                </a>
+      <div class="desc">
+        <a href="" class="logo" vanilla-tilt data-tilt-max="30" data-tilt-scale="1.4" ilt-speed="300"
+          data-tilt-perspective="500">
+          <img src="assets/built-in/images/favicon.png" alt="logo ">
+        </a>
 
-                <div class="caption">
-                    <small class="version">
-                        Versión 1.0
-                    </small>
-                    <small>All rights reserved to <strong>
-                            App Title
-                        </strong></small>
-                    <a href="">
-                        Desarrollado por <strong>@Victorguz</strong>
-                    </a>
-                </div>
-            </div>
+        <div class="caption">
+          <small class="version">
+            Versión 1.0
+          </small>
+          <small>All rights reserved to <strong>
+              App Title
+            </strong></small>
+          <a href="">
+            Desarrollado por <strong>@Victorguz</strong>
+          </a>
+        </div>
+      </div>
 
 
 
-            <form class="login-form">
+      <form class="login-form" [formGroup]="form" (ngSubmit)="login($event)">
 
-                <div class="desc">
-                    <h1 class="ui header">
-                        {{title}}
-                    </h1>
-                    <a href="" class="logo" vanilla-tilt data-tilt-max="30" data-tilt-scale="1.4" ilt-speed="300"
-                        data-tilt-perspective="500">
-                        <img src="assets/built-in/images/favicon.png" alt="logo">
-                    </a>
-                </div>
-
-                <div class="actions">
-                    <h1 class="ui header">
-                        {{title}}
-                    </h1>
-
-                    <mat-form-field appearance="outline" class="fluid">
-                        <mat-label>Nombre de usuario</mat-label>
-                        <input type="text" name="username" matInput>
-                    </mat-form-field>
-
-                    <mat-form-field appearance="outline" class="fluid">
-                        <mat-label>Contraseña</mat-label>
-                        <input type="password" name="password" matInput>
-                    </mat-form-field>
-
-                    <button mat-button type="submit" class="primary fluid">Ingresar</button>
-
-                    <a href="">Ayuda para ingresar</a>
-                </div>
-
-                <div class="desc">
-                    <div class="caption">
-                        <small class="version">
-                            Versión 1.0
-                        </small>
-                        <small>All rights reserved to <strong>APP_NAME</strong></small>
-                        <a href="">Desarrollado por @Victorguz</a>
-                    </div>
-                </div>
-
-            </form>
+        <div class="desc">
+          <h1 class="ui header">
+            {{title}}
+          </h1>
+          <a href="" class="logo" vanilla-tilt data-tilt-max="30" data-tilt-scale="1.4" ilt-speed="300"
+            data-tilt-perspective="500">
+            <img src="assets/built-in/images/favicon.png" alt="logo">
+          </a>
         </div>
 
+        <div class="actions">
+          <h1 class="ui header">
+            {{title}}
+          </h1>
+
+          <mat-form-field appearance="outline" class="fluid">
+            <mat-label>Nombre de usuario</mat-label>
+            <input type="text" formControlName="username" [errorStateMatcher]="matcher" matInput>
+            <mat-error *ngIf="form.get('username').hasError('email') && !form.get('username').hasError('required')">
+              Please enter a valid username
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="fluid">
+            <mat-label>Contraseña</mat-label>
+            <input type="password" formControlName="password" matInput>
+          </mat-form-field>
+
+          <button mat-button type="submit" class="primary fluid">Ingresar</button>
+
+          <a href="">Ayuda para ingresar</a>
+        </div>
+
+        <div class="desc">
+          <div class="caption">
+            <small class="version">
+              Versión 1.0
+            </small>
+            <small>All rights reserved to <strong>APP_NAME</strong></small>
+            <a href="">Desarrollado por @Victorguz</a>
+          </div>
+        </div>
+
+      </form>
     </div>
+
+  </div>
 </div>

@@ -23,8 +23,8 @@ export class Helpers {
 
   /**
  * Pone en mayusculas la inicial de cada palabra y en minusculas el resto de las letras en una cadena.
- * @param cad 
- * @param split 
+ * @param cad
+ * @param split
  */
   public capitalize(cad: string, split: string = " ") {
     let arr = cad.toLocaleLowerCase().split(split);
@@ -70,7 +70,7 @@ export class Helpers {
     const snackBarRef = this._snackBar.open(message, textAction, {
       duration: time,
       horizontalPosition: "end",
-      verticalPosition: "bottom",
+      verticalPosition: "top",
       panelClass: _class
     });
 
