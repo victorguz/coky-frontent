@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuardService } from '../modules/auth/guard.service';
 import { NotFoundComponent } from '../view/default/not-found/not-found.component';
-import { LoginComponent } from '../view/users/login/login.component';
+import { LoginComponent } from '../view/login/login.component';
+
 
 const routes: Routes = [
   // /**
@@ -11,7 +13,7 @@ const routes: Routes = [
   // {
   //   path: Config.adminRoute + "", component: AdminHomeComponent,
   //   data: {
-  //     roles: ["all"],
+  //     roles: [],
   //     title: "home",
   //     sidebar: {
   //       icon: "home",
@@ -23,7 +25,7 @@ const routes: Routes = [
   // {
   //   path: Config.adminRoute + '/users', component: AdminUsersComponent,
   //   data: {
-  //     roles: ["all"],
+  //     roles: [],
   //     title: "Users",
   //     sidebar: {
   //       icon: "people",
@@ -39,16 +41,15 @@ const routes: Routes = [
   //   }
   // },
   {
-    path: ''/**'users/login'*/, component: LoginComponent,
+    path: 'users/login', component: LoginComponent,
     data: {
-      roles: ["all"],
       title: "Login",
     },
   },
   // {
   //   path: 'admin/users/register', component: AdminRegisterComponent,
   //   data: {
-  //     roles: ["all"],
+  //     roles: [],
   //     title: "Registrarse",
   //   },
   // },
@@ -62,42 +63,42 @@ const routes: Routes = [
   // {
   //   path: '', component: PublicHomeComponent,
   //   data: {
-  //     roles: ["all"],
+  //     roles: [],
   //     title: "home",
   //   }
   // },
   // {
   //   path: 'services', component: PublicServicesComponent,
   //   data: {
-  //     roles: ["all"],
+  //     roles: [],
   //     title: "services",
   //   }
   // },
   // {
   //   path: 'plans', component: PublicPlansComponent,
   //   data: {
-  //     roles: ["all"],
+  //     roles: [],
   //     title: "plans",
   //   }
   // },
   // {
   //   path: 'about', component: PublicAboutComponent,
   //   data: {
-  //     roles: ["all"],
+  //     roles: [],
   //     title: "about",
   //   }
   // },
   // {
   //   path: 'contact', component: PublicContactComponent,
   //   data: {
-  //     roles: ["all"],
+  //     roles: [],
   //     title: "contact",
   //   }
   // },
   // {
   //   path: 'quote/:type', component: PublicContactComponent,
   //   data: {
-  //     roles: ["all"],
+  //     roles: [],
   //     title: "quote",
   //   }
   // },
@@ -108,14 +109,21 @@ const routes: Routes = [
   // //dev
 
   //Default
+  { path: '', redirectTo: '/users/login', pathMatch: 'full' },
   {
     path: '**', component: NotFoundComponent,
     data: {
-      roles: ["all"],
+      roles: [],
       title: "404"
     }
   }
 ];
+
+routes.forEach((route, index) => {
+  if (route.data && route.data.roles && Array.isArray(route.data.roles) && route.data.roles.length > 0) {
+    routes[index].canActivate = [AuthGuardService]
+  }
+});
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

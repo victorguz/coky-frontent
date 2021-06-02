@@ -1,5 +1,4 @@
 .coky-container {
-
   .fluid {
     width: 100%;
   }
@@ -68,7 +67,6 @@
     color: $gray-color !important;
   }
 
-
   .rounded {
     border-radius: $rounded !important;
   }
@@ -96,7 +94,7 @@
   }
 
   .gap {
-    gap: .5rem;
+    gap: 0.5rem;
   }
 
   .gap-1 {
@@ -119,7 +117,6 @@
     gap: 5rem;
   }
 
-
   .text-left {
     text-align: left;
   }
@@ -132,18 +129,32 @@
     text-align: center;
   }
 
-  .ui {
-    &.form {
-      display: flex;
-      flex-flow: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
+  .field {
+    display: flex;
+    flex-flow: column;
+    padding: 5px;
+    width: 100%;
 
-      .field {
-        width: 100%;
-      }
+    transition: all ease 1s !important;
+
+    label {
+      font-weight: $font-semibold;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      background-color: $input-color;
+      border: 1px solid $input-color;
+      border-radius: $rounded;
+      padding: 10px 15px;
+    }
+
+    .error {
+      transition: all ease 1s;
+      color: $danger-color;
+      padding: 5px;
+      padding-bottom: 0;
     }
   }
-
 }

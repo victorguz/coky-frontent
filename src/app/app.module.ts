@@ -20,13 +20,16 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppComponent } from './view/app.component';
-import { CookieService } from 'ngx-cookie-service';
-import { LoginComponent } from './view/users/login/login.component';
 import { NotFoundComponent } from './view/default/not-found/not-found.component';
 import { ForbiddenComponent } from './view/default/forbidden/forbidden.component';
-import { LoginHelpComponent } from './view/users/login-help/login-help.component';
+import { CokyHelperDialogComponent } from './core/helpers';
+import { AuthModule } from './modules/auth/auth.module';
+import { LoginComponent } from './view/login/login.component';
+import { LoginHelpComponent } from './view/login-help/login-help.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,8 @@ import { LoginHelpComponent } from './view/users/login-help/login-help.component
     NotFoundComponent,
     ForbiddenComponent,
     LoginHelpComponent,
+    //helpers
+    CokyHelperDialogComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -43,9 +48,9 @@ import { LoginHelpComponent } from './view/users/login-help/login-help.component
     ReactiveFormsModule,
     ConfigRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     // IonicModule.forRoot(),
     //material
-    BrowserAnimationsModule,
     MatSidenavModule,
     MatButtonModule,
     MatButtonToggleModule,
@@ -56,13 +61,17 @@ import { LoginHelpComponent } from './view/users/login-help/login-help.component
     MatSelectModule,
     MatIconModule,
     MatSnackBarModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
     // On server
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
+    //Own modules
+    AuthModule,
   ],
-  providers: [CookieService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

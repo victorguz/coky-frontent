@@ -1,105 +1,103 @@
 //Colors
-$navbar-color:unquote(var(--navbar-color));
-$navbar-hover-color:unquote(var(--navbar-hover-color));
-$navbar-height:unquote(var(--navbar-height));
-$navbar-icon-size:unquote(var(--navbar-icon-size));
+$navbar-color: unquote(var(--navbar-color));
+$navbar-hover-color: unquote(var(--navbar-hover-color));
+$navbar-height: unquote(var(--navbar-height));
+$navbar-icon-size: unquote(var(--navbar-icon-size));
 
-$white-color:#ffffff;
-$back-color:unquote(var(--back-color));
-$back-color-hover:unquote(var(--back-colo-hover));
-$back-color-opacity:unquote(var(--back-colo-opacity));
+$white-color: #ffffff;
+$back-color: unquote(var(--back-color));
+$back-color-hover: unquote(var(--back-colo-hover));
+$back-color-opacity: unquote(var(--back-colo-opacity));
 
-$primary-color:unquote(var(--primary-color));
-$primary-color-hover:unquote(var(--primary-color-hover));
-$primary-color-opacity:unquote(var(--primary-color-opacity));
+$primary-color: unquote(var(--primary-color));
+$primary-color-hover: unquote(var(--primary-color-hover));
+$primary-color-opacity: unquote(var(--primary-color-opacity));
 
-$gray-color:unquote(var(--gray-color));
-$gray-color-hover:unquote(var(--gray-color-hover));
-$gray-color-opacity:unquote(var(--gray-color-opacity));
+$gray-color: unquote(var(--gray-color));
+$gray-color-hover: unquote(var(--gray-color-hover));
+$gray-color-opacity: unquote(var(--gray-color-opacity));
 
-$dark-color:unquote(var(--dark-color));
-$dark-color-hover:unquote(var(--dark-color-hover));
-$dark-color-opacity:unquote(var(--dark-color-opacity));
+$dark-color: unquote(var(--dark-color));
+$dark-color-hover: unquote(var(--dark-color-hover));
+$dark-color-opacity: unquote(var(--dark-color-opacity));
 
-$secondary-color:unquote(var(--secondary-color));
-$secondary-color-hover:unquote(var(--secondary-color-hover));
-$secondary-color-opacity:unquote(var(--secondary-color-opacity));
+$secondary-color: unquote(var(--secondary-color));
+$secondary-color-hover: unquote(var(--secondary-color-hover));
+$secondary-color-opacity: unquote(var(--secondary-color-opacity));
 
-$danger-color:unquote(var(--danger-color));
-$danger-color-hover:unquote(var(--danger-color-hover));
-$danger-color-opacity:unquote(var(--danger-color-opacity));
+$danger-color: unquote(var(--danger-color));
+$danger-color-hover: unquote(var(--danger-color-hover));
+$danger-color-opacity: unquote(var(--danger-color-opacity));
 
-$alert-color:unquote(var(--alert-color));
-$alert-color-hover:unquote(var(--alert-color-hover));
-$alert-color-opacity:unquote(var(--alert-color-opacity));
+$alert-color: unquote(var(--alert-color));
+$alert-color-hover: unquote(var(--alert-color-hover));
+$alert-color-opacity: unquote(var(--alert-color-opacity));
 
-$success-color:unquote(var(--success-color));
-$success-color-hover:unquote(var(--success-color-hover));
-$success-color-opacity:unquote(var(--success-color-opacity));
+$success-color: unquote(var(--success-color));
+$success-color-hover: unquote(var(--success-color-hover));
+$success-color-opacity: unquote(var(--success-color-opacity));
 
-$info-color:unquote(var(--info-color));
-$info-color-hover:unquote(var(--info-color-hover));
-$info-color-opacity:unquote(var(--info-color-opacity));
+$info-color: unquote(var(--info-color));
+$info-color-hover: unquote(var(--info-color-hover));
+$info-color-opacity: unquote(var(--info-color-opacity));
 
-$sidebar-color:unquote(var(--sidebar-color));
-$sidebar-icon-size:unquote(var(--sidebar-icon-size));
-$sidebar-text-color:unquote(var(--sidebar-text-color));
-$sidebar-text-hover-color:unquote(var(--sidebar-text-hover-color));
-$sidebar-button-hover-color:unquote(var(--sidebar-button-hover-color));
-$sidebar-button-selected-color:unquote(var(--sidebar-button-selected-color));
+$input-color: unquote(var(--input-color));
 
+$sidebar-color: unquote(var(--sidebar-color));
+$sidebar-icon-size: unquote(var(--sidebar-icon-size));
+$sidebar-text-color: unquote(var(--sidebar-text-color));
+$sidebar-text-hover-color: unquote(var(--sidebar-text-hover-color));
+$sidebar-button-hover-color: unquote(var(--sidebar-button-hover-color));
+$sidebar-button-selected-color: unquote(var(--sidebar-button-selected-color));
 
+$default-radius: unquote(var(--default-radius));
+$dropdown-radius: unquote(var(--dropdown-radius));
+$card-radius: unquote(var(--card-radius));
+$field-radius: unquote(var(--field-radius));
+$button-radius: unquote(var(--button-radius));
 
-$default-radius:unquote(var(--default-radius));
-$dropdown-radius:unquote(var(--dropdown-radius));
-$card-radius:unquote(var(--card-radius));
-$field-radius:unquote(var(--field-radius));
-$button-radius:unquote(var(--button-radius));
+$back-color: #3c5f5b;
+$primary-color: #a6c634;
+$gray-color: #dbe0dc;
+$dark-color: #15214b;
+$secondary-color: #343a40;
 
-$back-color:#3C5F5B;
-$primary-color:#A6C634;
-$gray-color:#DBE0DC;
-$dark-color:#15214B;
-$secondary-color:#343a40;
-
-$danger-color:#FA6F6F;
-$alert-color:#FDC93F;
-$success-color:#4cca79;
+$danger-color: #fa6f6f;
+$alert-color: #fdc93f;
+$success-color: #4cca79;
 
 //Other colors
-$border-color:#e9e9e9;
-$shadow-color:#0000003B;
-
+$border-color: #e9e9e9;
+$shadow-color: #0000003b;
+$input-color: #f0f2f5;
 
 //sizes
-$rounded-sm:10px;
-$rounded:15px;
-$border:1px solid $border-color;
-
+$rounded-sm: 10px;
+$rounded: 15px;
+$border: 1px solid $border-color;
 
 //effects
-$shadow-xs:1px 1px 2px 0px $shadow-color;
-$shadow-sm:3px 3px 4px 0px $shadow-color;
-$shadow-md:0px 5px 10px $shadow-color;
-$shadow:0px 10px 20px $shadow-color;
-$shadow-fb:0 1px 2px rgba(0, 0, 0, 0.2);
+$shadow-xs: 1px 1px 2px 0px $shadow-color;
+$shadow-sm: 3px 3px 4px 0px $shadow-color;
+$shadow-md: 0px 5px 10px $shadow-color;
+$shadow: 0px 10px 20px $shadow-color;
+$shadow-fb: 0 1px 2px rgba(0, 0, 0, 0.2);
 
 //Fonts
-$font-thin:100;
-$font-extra-light:200;
-$font-light:300;
-$font-regular:400;
-$font-medium:500;
-$font-semibold:600;
-$font-bold:700;
-$font-extra-bold:800;
-$font-black:900;
+$font-thin: 100;
+$font-extra-light: 200;
+$font-light: 300;
+$font-regular: 400;
+$font-medium: 500;
+$font-semibold: 600;
+$font-bold: 700;
+$font-extra-bold: 800;
+$font-black: 900;
 
-$default-font-size:16px;
+$default-font-size: 16px;
 
-
-$primary-font: 'Montserrat';
-$secondary-font: 'Karla';
-$last-font: 'Poppins';
+$primary-font: "Montserrat";
+$secondary-font: "Karla";
+$last-font: "Poppins";
 //transitions
-$transition-basic:all ease 0.3s;
+$transition-basic: all ease 0.3s;
