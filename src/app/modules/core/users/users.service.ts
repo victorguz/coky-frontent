@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { User } from "./users.model";
-import { Service } from '../../core/service';
-import { Checks } from '../../core/checks';
+import { Service } from '../../../core/service';
+import { Checks } from '../../../core/checks';
 
 /**
  * UsersService

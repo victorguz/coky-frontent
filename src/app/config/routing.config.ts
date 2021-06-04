@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuardService } from '../modules/auth/guard.service';
+import { AuthGuardService } from '../modules/core/auth/guard.service';
 import { NotFoundComponent } from '../view/default/not-found/not-found.component';
+import { LoginHelpComponent } from '../view/login-help/login-help.component';
 import { LoginComponent } from '../view/login/login.component';
 
 
@@ -41,10 +42,21 @@ const routes: Routes = [
   //   }
   // },
   {
-    path: 'users/login', component: LoginComponent,
-    data: {
-      title: "Login",
-    },
+    path: 'users',
+    children: [
+      {
+        path: 'login', component: LoginComponent,
+        data: {
+          title: "Login",
+        },
+      },
+      {
+        path: 'login/help', component: LoginHelpComponent, data: { title: "Login help", },
+      },
+      {
+        path: 'login/help/:type', component: LoginHelpComponent, data: { title: "{type} help", },
+      }
+    ]
   },
   // {
   //   path: 'admin/users/register', component: AdminRegisterComponent,

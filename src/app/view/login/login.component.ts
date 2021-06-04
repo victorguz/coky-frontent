@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { Component, } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ErrorStateMatcher } from '@angular/material/core';
 import { APP_TITLE, APP_DEVELOPER, APP_DEVELOPER_LINK, APP_VERSION, ROUTE_ON_LOGIN } from 'src/app/config/default.config';
 import { animate, style, transition, trigger } from '@angular/animations';
-import { AuthService } from 'src/app/modules/auth/auth.service';
+import { AuthService } from 'src/app/modules/core/auth/auth.service';
 import { Helpers } from 'src/app/core/helpers';
+import { CokyLangCategory } from 'src/app/core/langs';
+import { Animations } from 'src/app/core/animations';
 
 
 @Component({
@@ -14,27 +15,7 @@ import { Helpers } from 'src/app/core/helpers';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   animations: [
-    trigger(
-      'opacityAnimation',
-      [
-        transition(
-          ':enter',
-          [
-            style({ height: 0 }),
-            animate('0.2s ease-out',
-              style({ height: "fit-content" }))
-          ]
-        ),
-        transition(
-          ':leave',
-          [
-            style({ height: "fit-content" }),
-            animate('0.2s ease-in',
-              style({ height: 0 }))
-          ]
-        )
-      ]
-    )
+    Animations.hidenHeightAnimation()
   ]
 })
 
@@ -45,6 +26,8 @@ export class LoginComponent {
   public DEVELOPER = APP_DEVELOPER;
   public DEVELOPER_LINK = APP_DEVELOPER_LINK;
   public VERSION = APP_VERSION;
+  public LANG_CATEGORY = CokyLangCategory.USERS
+
   public loading: boolean = false;
 
   public form: FormGroup = this.formBuilder.group({
@@ -52,7 +35,7 @@ export class LoginComponent {
     password: ["", [Validators.required]],
   });
 
-  constructor(private docTitle: Title, private helpers: Helpers,
+  constructor(private helpers: Helpers,
     private activeRoute: ActivatedRoute, private formBuilder: FormBuilder,
     private authService: AuthService, private router: Router) {
     if (this.authService.isAuthenticated()) {
@@ -61,7 +44,7 @@ export class LoginComponent {
     this.activeRoute.data.subscribe(data => {
       if (data.title) {
         this.TITLE = data.title;
-        this.docTitle.setTitle(helpers.getTitle(data.title));
+        this.helpers.setTitle(data.title);
       }
     })
 
@@ -85,10 +68,6 @@ export class LoginComponent {
       this.loading = false
       this.helpers.alertMessage("Digite un nombre de usuario y contraseña válidos")
     }
-  }
-
-
-  validateForm() {
   }
 
 }

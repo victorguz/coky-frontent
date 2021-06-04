@@ -51,7 +51,7 @@ export class Service<T> {
    * El método "update" modifica una instancia de la entidad en la base de datos
    */
   update(id: number, entity: T): Promise<any> {
-    return this.http.put<any>(`${this.API_URL}/${this.ENTITY_NAME}/update/${id}`, entity).toPromise();
+    return this.http.patch<any>(`${this.API_URL}/${this.ENTITY_NAME}/update/${id}`, entity).toPromise();
   }
 
   /**

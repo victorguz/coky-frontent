@@ -27,9 +27,10 @@ import { AppComponent } from './view/app.component';
 import { NotFoundComponent } from './view/default/not-found/not-found.component';
 import { ForbiddenComponent } from './view/default/forbidden/forbidden.component';
 import { CokyHelperDialogComponent } from './core/helpers';
-import { AuthModule } from './modules/auth/auth.module';
+import { AuthModule } from './modules/core/auth/auth.module';
 import { LoginComponent } from './view/login/login.component';
 import { LoginHelpComponent } from './view/login-help/login-help.component';
+import { TranslatePipe } from './core/pipes/translate.pipe';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { LoginHelpComponent } from './view/login-help/login-help.component';
     ForbiddenComponent,
     LoginHelpComponent,
     //helpers
-    CokyHelperDialogComponent
+    CokyHelperDialogComponent,
+    TranslatePipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

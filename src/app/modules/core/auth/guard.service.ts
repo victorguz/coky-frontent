@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
 import { AuthToken, AuthService } from './auth.service';
 import decode from 'jwt-decode';
-import { UserRoles } from 'src/app/modules/users/users.model';
+import { UserRoles } from 'src/app/modules/core/users/users.model';
 
 /**
  * AuthGuardService

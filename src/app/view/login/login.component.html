@@ -31,7 +31,7 @@
 
         <div class="desc">
           <h1 class="ui header">
-            {{TITLE}}
+            {{TITLE|titlecase}}
           </h1>
 
           <a href="" class="logo" vanilla-tilt data-tilt-max="30" data-tilt-scale="1.4" ilt-speed="300"
@@ -46,7 +46,7 @@
 
         <div class="actions" *ngIf="!loading">
           <h1 class="ui header">
-            {{TITLE}}
+            {{TITLE|titlecase}}
           </h1>
 
           <div class="field">
@@ -55,7 +55,7 @@
               pattern="^[a-zA-Z]+([a-zA-Z]+[0-9]{0,4})*">
             <small class="error"
               *ngIf="form.get('username').dirty && (form.get('username').hasError('required')||form.get('username').hasError('pattern'))"
-              [@opacityAnimation]>
+              [@hidenHeightAnimation]>
               Digite un nombre de usuario válido
             </small>
           </div>
@@ -65,17 +65,15 @@
             <input type="password" formControlName="password" placeholder="Contraseña">
             <small class="error"
               *ngIf="form.get('password').dirty && (form.get('password').hasError('required')||form.get('password').hasError('pattern'))"
-              [@opacityAnimation]>
+              [@hidenHeightAnimation]>
               Digite una contraseña válida
             </small>
           </div>
 
 
-          <button mat-button type="submit" class="primary fluid">
-            Ingresar
-          </button>
+          <button mat-button type="submit" class="primary fluid">Ingresar</button>
 
-          <a href="">Ayuda para ingresar</a>
+          <a [routerLink]="['/users/login/help']">{{"Ayuda para ingresar" | translate : LANG_CATEGORY}}</a>
         </div>
 
         <div class="desc">

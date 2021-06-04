@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { APP_TITLE } from '../config/default.config';
 import * as bcrypt from 'bcryptjs';
+import { Title } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root',
@@ -12,31 +13,61 @@ export class Helpers {
 
   constructor(private router: Router,
     private _snackBar: MatSnackBar,
-    public _dialog: MatDialog) { }
+    private _dialog: MatDialog,
+    private _title: Title) { }
 
-  public getTitle(subTitle: string = "") {
+  public setTitle(subTitle: string = "", stringCase: StringCaseType = StringCaseType.TITLECASE) {
     subTitle = subTitle.trim();
     if (subTitle.length > 0) {
-      return `${subTitle} | ${APP_TITLE}`
+      this._title.setTitle(Helpers.toStringCase(`${subTitle} | ${APP_TITLE}`, stringCase))
     } else {
-      return `${APP_TITLE}`
+      this._title.setTitle(Helpers.toStringCase(`${APP_TITLE}`, stringCase))
+    }
+  }
+
+  public getTitle() {
+    return this._title.getTitle()
+  }
+  /**
+   * Pone mayusculas o minusculas en un string usando como
+   * selector un parámetro único de la enumeración StringCaseType
+   * @param cadena
+   * @param stringCase
+   * @returns
+   */
+  public static toStringCase(cadena: string, stringCase: StringCaseType): string {
+    switch (stringCase) {
+      case StringCaseType.TITLECASE: return Helpers.toTitleCase(cadena)
+      case StringCaseType.PHRASECASE: return Helpers.toPhraseCase(cadena)
+      case StringCaseType.LOWERCASE: return cadena.toLowerCase()
+      case StringCaseType.UPPERCASE: return cadena.toUpperCase()
     }
   }
 
   /**
- * Pone en mayusculas la inicial de cada palabra y en minusculas el resto de las letras en una cadena.
- * @param cad
- * @param split
- */
-  public capitalize(cad: string, split: string = " ") {
-    let arr = cad.toLocaleLowerCase().split(split);
-    cad = "";
-    arr.forEach(e => {
-      cad += e[0].toUpperCase() + e.substring(1) + " ";
-    });
+   * Pone en mayusculas la inicial de cada palabra y en minusculas el resto de las letras en una cadena.
+   * @param cad
+   * @param split
+   */
+  public static toTitleCase(cad: string, split: string = " ") {
+    cad = cad.trim()
+    if (cad.length > 0) {
+      let arr = cad.toLocaleLowerCase().split(split);
+      cad = "";
+      arr.forEach(e => {
+        cad += e[0].toUpperCase() + e.substring(1) + " ";
+      });
+    }
     return cad;
   }
 
+  /**
+  * Pone en mayusculas la inicial de cada frase separandola por puntos (.)
+  * @param cad
+  */
+  public static toPhraseCase(cad: string) {
+    return this.toTitleCase(cad, ".");
+  }
   /**
    * Verifica si la cadena hace match con el regex
    * @param cadena
@@ -135,6 +166,8 @@ export class Helpers {
   async compareEncoded(notEncrypted, encrypted): Promise<boolean> {
     return await bcrypt.compareSync(notEncrypted, encrypted)
   }
+
+
 }
 
 
@@ -192,4 +225,8 @@ export class CokyDialogData {
   cancelButtonClass?: string = ""
   onOk?: Function = null
   onCancel?: Function = null
+}
+
+export enum StringCaseType {
+  LOWERCASE, UPPERCASE, PHRASECASE, TITLECASE
 }

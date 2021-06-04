@@ -67,6 +67,22 @@
     color: $gray-color !important;
   }
 
+  .text-left {
+    text-align: left !important;
+  }
+
+  .text-center {
+    text-align: center !important;
+  }
+
+  .text-right {
+    text-align: right !important;
+  }
+
+  .text-justified {
+    text-align: justify !important;
+  }
+
   .rounded {
     border-radius: $rounded !important;
   }
@@ -143,6 +159,7 @@
     }
 
     input[type="text"],
+    input[type="email"],
     input[type="password"] {
       background-color: $input-color;
       border: 1px solid $input-color;
@@ -156,5 +173,22 @@
       padding: 5px;
       padding-bottom: 0;
     }
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .flex-column {
+    @extend .flex;
+    flex-flow: column;
+  }
+
+  .centered {
+    align-items: center;
+  }
+
+  .justified-center {
+    justify-content: center;
   }
 }
