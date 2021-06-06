@@ -1,13 +1,12 @@
 import { Component, } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { APP_TITLE, APP_DEVELOPER, APP_DEVELOPER_LINK, APP_VERSION, ROUTE_ON_LOGIN, USERS_CAN_UNLOCK_THEIR_OWN_USER } from 'src/app/config/default.config';
-import { animate, style, transition, trigger } from '@angular/animations';
 import { AuthService } from 'src/app/modules/core/auth/auth.service';
-import { Helpers } from 'src/app/core/helpers';
-import { CokyLangCategory, __ } from 'src/app/core/langs';
+import { Helpers } from 'src/app/core/helpers/helpers';
 import { Animations } from 'src/app/core/animations';
+import { getConfig } from 'src/app/config/default.config';
+import { CokyLangCategory } from 'src/app/core/langs/lang.model';
+import { __ } from 'src/app/core/langs/lang.phrases';
 @Component({
   selector: 'app-login-help',
   templateUrl: './login-help.component.html',
@@ -19,12 +18,12 @@ import { Animations } from 'src/app/core/animations';
 export class LoginHelpComponent {
 
   public TITLE = "Login help";
-  public APP_NAME = APP_TITLE;
-  public DEVELOPER = APP_DEVELOPER;
-  public DEVELOPER_LINK = APP_DEVELOPER_LINK;
-  public VERSION = APP_VERSION;
+  public APP_NAME = getConfig("app_title");
+  public DEVELOPER = getConfig("app_developer");
+  public DEVELOPER_LINK = getConfig("app_developer_link");
+  public VERSION = getConfig("app_version");
   public LANG_CATEGORY = CokyLangCategory.USERS
-  public CAN_UNLOCK: boolean = !USERS_CAN_UNLOCK_THEIR_OWN_USER;
+  public CAN_UNLOCK: boolean = !getConfig("users_can_unlock_their_own_user");
 
 
   public loading: boolean = false;
@@ -36,12 +35,6 @@ export class LoginHelpComponent {
   public TYPE_BLOCKED = "blocked";
   public TYPE_OTHER = "other";
 
-  public EMAIL_ERROR_MESSAGE = __("Digite un correo electrónico válido", CokyLangCategory.USERS);
-  public CANT_UNLOCK_MESSAGE = __("Lo sentimos, solo los administradores pueden desbloquear tu usuario.", CokyLangCategory.USERS)
-  public SENT_MESSAGE = __(`Hemos enviado un mensaje a tu dirección de correo electrónico.
-          Sigue las instrucciones para poder recuperar tu`, CokyLangCategory.USERS)
-    + `<i>${this.type && this.type != this.TYPE_BLOCKED ? __(this.type) : __("Usuario")}</i>.`
-
   public formForget: FormGroup = this.formBuilder.group({
     email: ["", [Validators.required, Validators.email]],
   });
@@ -51,7 +44,7 @@ export class LoginHelpComponent {
     private activeRoute: ActivatedRoute, private formBuilder: FormBuilder,
     private authService: AuthService, private router: Router) {
     if (this.authService.isAuthenticated()) {
-      this.router.navigate([ROUTE_ON_LOGIN])
+      this.router.navigate([getConfig("route_on_login")])
     }
     this.activeRoute.params.subscribe(params => {
       this.type = params.type ? params.type : "";
@@ -68,7 +61,7 @@ export class LoginHelpComponent {
     this.loading = true;
     if (!this.sentOk && this.type != '' && this.type != this.TYPE_OTHER) {
       if (this.type == this.TYPE_BLOCKED && !this.CAN_UNLOCK) {
-        this.helpers.errorMessage(this.CANT_UNLOCK_MESSAGE)
+        this.helpers.errorMessage(__("Lo sentimos, solo los administradores pueden desbloquear usuarios.", CokyLangCategory.USERS))
       } else {
         if (this.formForget.valid) {
           try {

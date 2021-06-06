@@ -1,10 +1,11 @@
-import { Component, Inject, Injectable } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {  Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { APP_TITLE } from '../config/default.config';
 import * as bcrypt from 'bcryptjs';
 import { Title } from '@angular/platform-browser';
+import { CokyDialogData, CokyHelperDialogComponent } from './classes/dialog.component';
+import { getConfig } from 'src/app/config/default.config';
 
 @Injectable({
   providedIn: 'root',
@@ -19,9 +20,9 @@ export class Helpers {
   public setTitle(subTitle: string = "", stringCase: StringCaseType = StringCaseType.TITLECASE) {
     subTitle = subTitle.trim();
     if (subTitle.length > 0) {
-      this._title.setTitle(Helpers.toStringCase(`${subTitle} | ${APP_TITLE}`, stringCase))
+      this._title.setTitle(Helpers.toStringCase(`${subTitle} | ${getConfig("app_title")}`, stringCase))
     } else {
-      this._title.setTitle(Helpers.toStringCase(`${APP_TITLE}`, stringCase))
+      this._title.setTitle(Helpers.toStringCase(`${getConfig("app_title")}`, stringCase))
     }
   }
 
@@ -170,61 +171,8 @@ export class Helpers {
 
 }
 
-
 export enum HelpersMessageType {
   PRIMARY, SECONDARY, SUCCESS, DANGER, ALERT, INFO, DARK, WHITE, GRAY
-}
-
-@Component({
-  selector: 'coky-helper-dialog',
-  template: `
-  <h1 mat-dialog-title>{{data.title}}</h1>
-  <div mat-dialog-content>
-    <p>{{data.message}}</p>
-  </div>
-  <div mat-dialog-actions>
-    <button mat-button (click)="onCancelClick($event)" class="{{data.cancelButtonClass}}">{{data.cancelButtonText}}</button>
-    <button mat-button [mat-dialog-close]="onOkClick()" class="{{data.okButtonClass}}" cdkFocusInitial>{{data.okButtonText}}</button>
-  </div>
-
-  `
-})
-export class CokyHelperDialogComponent {
-
-  constructor(
-    public dialogRef: MatDialogRef<CokyHelperDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: CokyDialogData) {
-
-    this.data.cancelButtonText = this.data.cancelButtonText ? this.data.cancelButtonText : "Cancel"
-    this.data.okButtonText = this.data.okButtonText ? this.data.okButtonText : "Ok"
-  }
-
-  onCancelClick(event: Event): void {
-    if (typeof this.data.onCancel == 'function') {
-      this.data.onCancel(event)
-    }
-    this.dialogRef.close();
-  }
-
-  onOkClick(): void {
-    if (typeof this.data.onOk == 'function') {
-      this.data.onOk()
-    }
-  }
-
-}
-
-export class CokyDialogData {
-  title?: string = "Title"
-  message?: string = `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-     Quo totam unde consequatur provident recusandae deleniti minima sint aliquam
-     fugiat neque veniam aut inventore ad dolorum dolores in, corporis accusantium harum.`
-  okButtonText?: string = "OK"
-  cancelButtonText?: string = "Cancel"
-  okButtonClass?: string = ""
-  cancelButtonClass?: string = ""
-  onOk?: Function = null
-  onCancel?: Function = null
 }
 
 export enum StringCaseType {

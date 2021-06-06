@@ -26,11 +26,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AppComponent } from './view/app.component';
 import { NotFoundComponent } from './view/default/not-found/not-found.component';
 import { ForbiddenComponent } from './view/default/forbidden/forbidden.component';
-import { CokyHelperDialogComponent } from './core/helpers';
 import { AuthModule } from './modules/core/auth/auth.module';
 import { LoginComponent } from './view/login/login.component';
 import { LoginHelpComponent } from './view/login-help/login-help.component';
 import { TranslatePipe } from './core/pipes/translate.pipe';
+import { CokyHelperDialogComponent } from './core/helpers/classes/dialog.component';
+import { PhrasecasePipe } from './core/pipes/phrasecase.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { TranslatePipe } from './core/pipes/translate.pipe';
     LoginHelpComponent,
     //helpers
     CokyHelperDialogComponent,
-    TranslatePipe
+    TranslatePipe,
+    PhrasecasePipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

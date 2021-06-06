@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { LOCAL_STORAGE_TOKEN, LOCAL_STORAGE_USER } from 'src/app/config/default.config';
-import { Helpers } from 'src/app/core/helpers';
+import { Helpers } from 'src/app/core/helpers/helpers';
 import { environment } from 'src/environments/environment';
 import { User } from '../users/users.model';
 

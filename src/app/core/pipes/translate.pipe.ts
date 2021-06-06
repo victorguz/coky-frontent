@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { CokyLangCategory, __ } from '../langs';
+import { CokyLangCategory } from '../langs/lang.model';
+import { translate } from '../langs/lang.phrases';
 
 @Pipe({
   name: 'translate'
@@ -10,7 +11,7 @@ export class TranslatePipe implements PipeTransform {
     let cat: CokyLangCategory = category ? CokyLangCategory[category] : CokyLangCategory.GENERAL;
 
     if (cat && typeof value == "string") {
-      return __(value, cat);
+      return translate(value, cat);
     }
     return value;
   }

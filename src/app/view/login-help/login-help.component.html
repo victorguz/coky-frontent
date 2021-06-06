@@ -16,17 +16,15 @@
 
         <div class="caption">
           <small class="version">
-            Versión {{VERSION}}
+            {{"Versión" | translate |titlecase}} {{VERSION}}
           </small>
-          <small>{{"Todos los derechos reservados a"|translate}}
+          <small>{{"Todos los derechos reservados a"|translate|phrasecase}}
             <strong>{{APP_NAME}}</strong>
           </small>
-          <a href="{{DEVELOPER_LINK}}">{{"Desarrollado por"|translate}}
+          <a href="{{DEVELOPER_LINK}}">{{"Desarrollado por"|translate|phrasecase}}
             <strong>{{DEVELOPER}}</strong></a>
         </div>
       </div>
-
-
 
       <div class="login-form">
 
@@ -52,7 +50,8 @@
 
           <div class="flex-column fluid centered gap" *ngIf="type==''">
 
-            <a mat-button [routerLink]="['/users/login/help',TYPE_PASSWORD]" class="gray fluid">Contraseña olvidada</a>
+            <a mat-button [routerLink]="['/users/login/help',TYPE_PASSWORD]" class="gray fluid">Contraseña
+              olvidada</a>
             <a mat-button [routerLink]="['/users/login/help',TYPE_USERNAME]" class="gray fluid">Usuario olvidado</a>
             <a *ngIf="CAN_UNLOCK" mat-button [routerLink]="['/users/login/help',TYPE_BLOCKED]"
               class="gray fluid">Usuario bloqueado</a>
@@ -69,7 +68,7 @@
               <small class="error"
                 *ngIf="formForget.get('email').dirty && (formForget.get('email').hasError('required')||formForget.get('email').hasError('email'))"
                 [@hidenHeightAnimation]>
-                {{EMAIL_ERROR_MESSAGE}}
+                {{"Digite un correo electrónico válido"|translate}}
               </small>
             </div>
 
@@ -97,12 +96,15 @@
           </form>
 
           <div class="text-center" *ngIf="sentOk">
-            {{SENT_MESSAGE}}
+            {{"Hemos enviado un mensaje a tu dirección de correo electrónico. "+
+            "Sigue las instrucciones para poder recuperar tu"|translate:DEFAULT_LANG|phrasecase}}
+            <i>{{type && type != TYPE_BLOCKED ? this.type : "Usuario"|translate}}.</i>
           </div>
 
           <div class="flex-column centered justified-center gap-1" *ngIf=" type==TYPE_BLOCKED && !CAN_UNLOCK">
             <div class="text-center">
-              {{CANT_UNLOCK_MESSAGE}}
+              {{"Lo sentimos, solo los administradores "
+              +" pueden desbloquear tu usuario."|translate:DEFAULT_LANG|phrasecase}}
             </div>
             <a mat-button [routerLink]="['/users/login/help',TYPE_OTHER]" class="gray fluid">Reportar problema</a>
             <a [routerLink]="['/users/login/help']">Volver a ayuda para ingresar</a>
@@ -113,12 +115,12 @@
         <div class="desc">
           <div class="caption">
             <small class="version">
-              {{"Versión"|translate}} {{VERSION}}
+              {{"Versión" | translate |titlecase}} {{VERSION}}
             </small>
-            <small>{{"Todos los derechos reservados a"|translate}}
+            <small>{{"Todos los derechos reservados a"|translate|phrasecase}}
               <strong>{{APP_NAME}}</strong>
             </small>
-            <a href="{{DEVELOPER_LINK}}">{{"Desarrollado por"|translate}}
+            <a href="{{DEVELOPER_LINK}}">{{"Desarrollado por"|translate|phrasecase}}
               <strong>{{DEVELOPER}}</strong></a>
           </div>
         </div>
