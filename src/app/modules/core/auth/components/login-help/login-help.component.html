@@ -1,0 +1,132 @@
+<div class="coky-container">
+  <div class="login">
+    <section class="container backgrounds-container">
+      <div class="overlay">
+        <div class="gradient"></div>
+      </div>
+    </section>
+
+    <div class="login-container">
+
+      <div class="desc">
+        <a href="" class="logo" vanilla-tilt data-tilt-max="30" data-tilt-scale="1.4" ilt-speed="300"
+          data-tilt-perspective="500">
+          <img src="assets/built-in/images/favicon.png" alt="logo ">
+        </a>
+
+        <div class="caption">
+          <small class="version">
+            {{"Versión" | translate |titlecase}} {{VERSION}}
+          </small>
+          <small>{{"Todos los derechos reservados a"|translate|phrasecase}}
+            <strong>{{APP_NAME}}</strong>
+          </small>
+          <a href="{{DEVELOPER_LINK}}">{{"Desarrollado por"|translate|phrasecase}}
+            <strong>{{DEVELOPER}}</strong></a>
+        </div>
+      </div>
+
+      <div class="login-form">
+
+        <div class="desc">
+          <h1 class="ui header">
+            {{TITLE|titlecase}}
+          </h1>
+
+          <a href="" class="logo" vanilla-tilt data-tilt-max="30" data-tilt-scale="1.4" ilt-speed="300"
+            data-tilt-perspective="500">
+            <img src="assets/built-in/images/favicon.png" alt="logo">
+          </a>
+        </div>
+
+        <div class="actions generic-loader" *ngIf="loading">
+          <mat-spinner></mat-spinner>
+        </div>
+
+        <div class="actions" *ngIf="!loading">
+          <h1 class="ui header">
+            {{TITLE|titlecase}}
+          </h1>
+
+          <div class="flex-column fluid centered gap" *ngIf="type==''">
+
+            <a mat-button [routerLink]="['/users/login/help',TYPE_PASSWORD]" class="gray fluid">Contraseña
+              olvidada</a>
+            <a mat-button [routerLink]="['/users/login/help',TYPE_USERNAME]" class="gray fluid">Usuario olvidado</a>
+            <a *ngIf="CAN_UNLOCK" mat-button [routerLink]="['/users/login/help',TYPE_BLOCKED]"
+              class="gray fluid">Usuario bloqueado</a>
+            <a mat-button [routerLink]="['/users/login/help',TYPE_OTHER]" class="gray fluid">Reportar problema</a>
+            <a mat-button [routerLink]="['/users/login']" class="primary fluid">Iniciar sesión</a>
+          </div>
+
+          <form class="flex-column fluid centered gap" [formGroup]="formForget" (ngSubmit)="forget($event)"
+            *ngIf="(!sentOK && type!='' && type!=TYPE_OTHER) || (!sentOK && type!='' && type!=TYPE_OTHER && type==TYPE_BLOCKED && !CAN_UNLOCK)">
+            <div class="field">
+              <label>Correo electrónico</label>
+              <input type="email" formControlName="email" placeholder="Correo electrónico">
+
+              <small class="error"
+                *ngIf="formForget.get('email').dirty && (formForget.get('email').hasError('required')||formForget.get('email').hasError('email'))"
+                [@hidenHeightAnimation]>
+                {{"Digite un correo electrónico válido"|translate}}
+              </small>
+            </div>
+
+            <button mat-button type="submit" class="primary fluid">Recuperar</button>
+            <a [routerLink]="['/users/login/help']">Volver a ayuda para ingresar</a>
+
+          </form>
+
+          <form class="flex-column fluid centered gap" [formGroup]="formForget" (ngSubmit)="forget($event)"
+            *ngIf="!sentOK && type!='' && type==TYPE_OTHER && CAN_UNLOCK">
+            <div class="field">
+              <label>Correo electrónico</label>
+              <input type="email" formControlName="email" placeholder="Correo electrónico">
+
+              <small class="error"
+                *ngIf="formForget.get('email').dirty && (formForget.get('email').hasError('required')||formForget.get('email').hasError('email'))"
+                [@hidenHeightAnimation]>
+                {{EMAIL_ERROR_MESSAGE}}
+              </small>
+            </div>
+
+            <button mat-button type="submit" class="primary fluid">Recuperar</button>
+            <a [routerLink]="['/users/login/help']">Volver a ayuda para ingresar</a>
+
+          </form>
+
+          <div class="text-center" *ngIf="sentOk">
+            {{"Hemos enviado un mensaje a tu dirección de correo electrónico. "+
+            "Sigue las instrucciones para poder recuperar tu"|translate:DEFAULT_LANG|phrasecase}}
+            <i>{{type && type != TYPE_BLOCKED ? this.type : "Usuario"|translate}}.</i>
+          </div>
+
+          <div class="flex-column centered justified-center gap-1" *ngIf=" type==TYPE_BLOCKED && !CAN_UNLOCK">
+            <div class="text-center">
+              {{"Lo sentimos, solo los administradores "
+              +" pueden desbloquear tu usuario."|translate:DEFAULT_LANG|phrasecase}}
+            </div>
+            <a mat-button [routerLink]="['/users/login/help',TYPE_OTHER]" class="gray fluid">Reportar problema</a>
+            <a [routerLink]="['/users/login/help']">Volver a ayuda para ingresar</a>
+          </div>
+
+        </div>
+
+        <div class="desc">
+          <div class="caption">
+            <small class="version">
+              {{"Versión" | translate |titlecase}} {{VERSION}}
+            </small>
+            <small>{{"Todos los derechos reservados a"|translate|phrasecase}}
+              <strong>{{APP_NAME}}</strong>
+            </small>
+            <a href="{{DEVELOPER_LINK}}">{{"Desarrollado por"|translate|phrasecase}}
+              <strong>{{DEVELOPER}}</strong></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

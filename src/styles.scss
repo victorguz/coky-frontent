@@ -1,8 +1,7 @@
 /**
 * Please, use this scss only for imports. Take care the order of each one.
 */
-@import "assets/built-in/scss/imports/variables.scss";
-@import "assets/built-in/scss/core.scss";
+@import "assets/scss/core.scss";
 
 * {
   transition: $transition-basic;
@@ -51,22 +50,39 @@ label {
 a {
   text-decoration: none;
 }
+
 small {
   font-size: 0.7rem;
 }
+
 label {
   font-size: 0.85rem;
 }
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: $secondary-font, $primary-font, $last-font, "Arial", "Helvetica",
+  font-family: $primary-font,
+    $secondary-font,
+    $last-font,
+    "Arial",
+    "Helvetica",
     serif, sans-serif !important;
   display: block;
   font-weight: bold;
+  line-height: 1em;
+  margin: 0.2em;
+  padding: 0;
+
+  >* {
+    font-size: 1em;
+    line-height: 1em;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 h1 {

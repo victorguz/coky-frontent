@@ -1,0 +1,32 @@
+<div class="coky-container home">
+    <article class="back">
+        <section class="nav">
+            <div class="links">
+                <a href="" mat-button>Mensaje</a>
+                <a href="" mat-button>Llamada</a>
+                <a href="" mat-button>Ubicación</a>
+            </div>
+        </section>
+        <section class="header">
+            <div class="logo">
+                <img src="assets/public/images/Logotipo.svg" alt="logotipo">
+            </div>
+            <div class="title" [ngClass]="{hidden: isHiddenHTitle}">
+                <h1>{{hActiveTitle}}<span [ngClass]="{true: hActiveTitleCursor,off:isTypeWriterOff}">|</span></h1>
+                <p>{{hActiveTitleContent}}<span
+                        [ngClass]="{true: hActiveTitleContentCursor,off:isTypeWriterOff}">|</span></p>
+            </div>
+            <div class="buttons">
+                <a href="" mat-flat-button class="primary huge">Contact us</a>
+                <a href="" mat-button class="huge">
+                    <img src="assets/public/images/home/Flecha_abajo.svg" alt="arrow_icon">
+                    Look what we have done
+                </a>
+            </div>
+        </section>
+        <section class="weare"></section>
+        <section class="accessible"></section>
+        <section class="provable"></section>
+        <section class="assertive"></section>
+    </article>
+</div>

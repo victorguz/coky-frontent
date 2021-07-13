@@ -46,6 +46,22 @@ const CokyPhrases: CokyLangPhraseCategory[] = [
         name: "Digite una contraseña válida",
         en: "Enter a valid password"
       },
+      {
+        name: "Volver atrás",
+        en: "Go back"
+      },
+      {
+        name: "Ir al inicio",
+        en: "Go home"
+      },
+      {
+        name: "Lo sentimos, no sabemos lo que estás buscando...",
+        en: "Sorry, we don't know what you are looking for...",
+      },
+      {
+        name: "Lo sentimos, no tiene permiso para acceder a este recurso...",
+        en: "Sorry, you do not have permission to access this resource...",
+      },
     ]
   },
   {
@@ -69,7 +85,7 @@ const CokyPhrases: CokyLangPhraseCategory[] = [
         en: "Login help"
       },
     ]
-  }
+  },
 ]
 
 export function __(cadena: string, category: CokyLangCategory = CokyLangCategory.GENERAL) {

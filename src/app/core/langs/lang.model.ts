@@ -11,6 +11,7 @@ export enum CokyLanguages {
 export enum CokyLangCategory {
   GENERAL = "GENERAL",
   USERS = "USERS",
+  NOT_FOUND = "NOT_FOUND",
 }
 export interface CokyLangPhraseCategory {
   type: CokyLangCategory,

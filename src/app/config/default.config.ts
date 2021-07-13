@@ -3,53 +3,51 @@ import { CokyLanguages } from "../core/langs/lang.model";
 /**
  * Global constant for default configurations
  */
-export const config: any[] = []
+const config: any[] = []
 
 /**
  * Styles
  */
 
 //navbar
-config["navbar_color"] = "#ffffff";
-config["navbar_hover_color"] = "#dadde1";
-config["navbar_height"] = "48px";
-config["navbar_icon_size"] = "25px";
-
-//colors
-config["back_color"] = "#F0F2F5";
-config["back_color_hover"] = "#F0F2F5";
-config["primary_color"] = "#A6C634";
-config["primary_color_hover"] = "#A6C634";
-config["secondary_color"] = "#343a40";
-config["secondary_color_hover"] = "#343a40";
-config["gray_color"] = "#DBE0DC";
-config["gray_color_hover"] = "#DBE0DC";
-config["dark_color"] = "#15214B";
-config["dark_color_hover"] = "#15214B";
-config["danger_color"] = "#FA6F6F";
-config["danger_color_hover"] = "#FA6F6F";
-config["alert_color"] = "#f1bc2a";
-config["alert_color_hover"] = "#f1bc2a";
-config["success_color"] = "#4cca79";
-config["success_color_hover"] = "#4cca79";
-config["info_color"] = "#1999c0";
-config["info_color_hover"] = "#1999c0";
-
-//sidebar
-config["sidebar_color"] = "#F0F2F5";
-config["sidebar_icon_size"] = "25px";
-config["sidebar_button_selected_color"] = "#ffffff";
-config["sidebar_button_hover_color"] = "#dadde1";
-config["sidebar_text_color"] = "#000000";
-config["sidebar_text_hover_color"] = "#000000";
-
-
-//radius
-config["default_radius"] = "5px";
-config["dropdown_radius"] = "5px";
-config["card_radius"] = "5px";
-config["field_radius"] = "8px";
-config["button_radius"] = "50px";
+config["css_style_properties"] = [
+  { name: "navbar_color", value: "#ffffff" },
+  { name: "navbar_hover_color", value: "#dadde1" },
+  { name: "navbar_height", value: "48px" },
+  { name: "navbar_icon_size", value: "25px" },
+  //colors
+  { name: "back_color", value: "#F0F2F5" },
+  { name: "back_color_hover", value: "#F0F2F5" },
+  { name: "primary_color", value: "#DD346D" },
+  { name: "primary_color_hover", value: "#DD346D" },
+  { name: "secondary_color", value: "#343a40" },
+  { name: "secondary_color_hover", value: "#343a40" },
+  { name: "gray_color", value: "#A4A4A4" },
+  { name: "gray_color_hover", value: "#DBE0DC" },
+  { name: "dark_color", value: "#15214B" },
+  { name: "dark_color_hover", value: "#15214B" },
+  { name: "danger_color", value: "#FA6F6F" },
+  { name: "danger_color_hover", value: "#FA6F6F" },
+  { name: "alert_color", value: "#f1bc2a" },
+  { name: "alert_color_hover", value: "#f1bc2a" },
+  { name: "success_color", value: "#4cca79" },
+  { name: "success_color_hover", value: "#4cca79" },
+  { name: "info_color", value: "#1999c0" },
+  { name: "info_color_hover", value: "#1999c0" },
+  //sidebar
+  { name: "sidebar_color", value: "#F0F2F5" },
+  { name: "sidebar_icon_size", value: "25px" },
+  { name: "sidebar_button_selected_color", value: "#ffffff" },
+  { name: "sidebar_button_hover_color", value: "#dadde1" },
+  { name: "sidebar_text_color", value: "#000000" },
+  { name: "sidebar_text_hover_color", value: "#000000" },
+  //radius
+  { name: "default_radius", value: "5px" },
+  { name: "dropdown_radius", value: "5px" },
+  { name: "card_radius", value: "8px" },
+  { name: "field_radius", value: "8px" },
+  { name: "button_radius", value: "50px" },
+]
 
 //app
 config["app_title"] = "Coky Framework";
@@ -58,11 +56,19 @@ config["app_developer"] = "@Victorguz";
 config["app_developer_link"] = "https://github.com/victorguz?tab=repositories";
 
 //Default routes
-config["route_on_login"] = "platform";
+config["route_on_login"] = "/platform";
+config["route_on_cant_register"] = "/home";
+config["route_on_forbidden"] = "/forbidden";
 config["default_lang"] = CokyLanguages.ENGLISH;
 
 //Default configuration
 config["users_can_unlock_their_own_user"] = true;
+config["users_can_register_themselves"] = true;
+config["users_default_register_role"] = "GENERAL";
+
+//Meta tags
+config["meta_description"] = `We are facilitators of the raising of projects and ideas in digital environments. Through the strategic development of marketing, branding, creative design, and product development and software strategies, we help your company have a digital impact that is agile and innovative. We provide advice for companies, projects and ideas that already have a logistical route outlined in which we can find improvement options, both in branding, marketing, software and the business model in general.`
+config["meta_keywords"] = ["graphic", "design", "software", "marketing", "web", "apps", "branding", "innovation", "creation"]
 
 
 /**

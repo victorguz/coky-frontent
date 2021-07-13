@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Helpers } from '../helpers/helpers';
+import { Helpers } from 'src/app/core/helpers/helpers';
 
 @Pipe({
   name: 'phrasecase'

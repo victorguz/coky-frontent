@@ -1,27 +1,32 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthService } from './auth.service';
-import { AuthGuardService } from './guard.service';
+import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './services/guard.service';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { environment } from 'src/environments/environment';
+import { AuthRoutingModule } from './auth.routing.module';
+import { GlobalModule } from '../../shared/global/global.module';
+import { LoginComponent } from './components/login/login.component';
+import { LoginHelpComponent } from './components/login-help/login-help.component';
+import { RegisterComponent } from './components/register/register.component';
+import { PhrasecasePipe } from 'src/app/core/pipes/phrasecase.pipe';
+import { TranslatePipe } from 'src/app/core/pipes/translate.pipe';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
 }
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    LoginComponent,
+    LoginHelpComponent,
+    RegisterComponent,
+  ],
   imports: [
     CommonModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        authScheme: "Bearer",
-        allowedDomains: environment.allowedDomains,
-        disallowedRoutes: environment.disallowedRoutes,
+    AuthRoutingModule,
+    GlobalModule,
 
-      }
-    })
   ],
   providers: [AuthService, AuthGuardService, JwtHelperService],
 })

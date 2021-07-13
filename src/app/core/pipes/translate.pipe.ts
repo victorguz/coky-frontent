@@ -7,8 +7,8 @@ import { translate } from '../langs/lang.phrases';
 })
 export class TranslatePipe implements PipeTransform {
 
-  transform(value: string, category: string): unknown {
-    let cat: CokyLangCategory = category ? CokyLangCategory[category] : CokyLangCategory.GENERAL;
+  transform(value: unknown = "", category: unknown = "GENERAL"): unknown {
+    let cat: CokyLangCategory = typeof category == "string" ? CokyLangCategory[category] : CokyLangCategory.GENERAL;
 
     if (cat && typeof value == "string") {
       return translate(value, cat);

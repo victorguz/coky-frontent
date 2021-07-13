@@ -1,1 +1,82 @@
-<p>not-found works!</p>
+<div class="coky-container">
+    <div class="login">
+        <section class="container backgrounds-container">
+            <div class="overlay">
+                <div class="gradient"></div>
+            </div>
+        </section>
+
+        <div class="login-container">
+
+            <div class="desc">
+                <a href="" class="logo" vanilla-tilt data-tilt-max="30" data-tilt-scale="1.4" ilt-speed="300"
+                    data-tilt-perspective="500">
+                    <img src="assets/built-in/images/favicon.png" alt="logo ">
+                </a>
+
+                <div class="caption">
+                    <small class="version">
+                        {{"Versión" | translate |titlecase}} {{VERSION}}
+                    </small>
+                    <small>{{"Todos los derechos reservados a"|translate|phrasecase}}
+                        <strong>{{APP_NAME}}</strong>
+                    </small>
+                    <a href="{{DEVELOPER_LINK}}">{{"Desarrollado por"|translate|phrasecase}}
+                        <strong>{{DEVELOPER}}</strong></a>
+                </div>
+            </div>
+
+
+
+            <div class="login-form">
+
+                <div class="desc">
+                    <h1 class="ui header" style="font-size: 5rem; margin: 0;">
+                        {{TITLE|titlecase}}
+                    </h1>
+
+                    <a href="" class="logo" vanilla-tilt data-tilt-max="30" data-tilt-scale="1.4" ilt-speed="300"
+                        data-tilt-perspective="500">
+                        <img src="assets/built-in/images/favicon.png" alt="logo">
+                    </a>
+                </div>
+
+                <div class="actions generic-loader" *ngIf="loading">
+                    <mat-spinner></mat-spinner>
+                </div>
+
+                <div class="actions" *ngIf="!loading">
+                    <h1 class="ui header" style="font-size: 5rem; margin-bottom: 0;">
+                        {{TITLE|titlecase}}
+                    </h1>
+                    <p class="text-center">
+                        {{"Lo sentimos, no sabemos lo que estás buscando..."|translate:LANG_CATEGORY|phrasecase}}
+                    </p>
+
+                    <button mat-button type="button" class="primary fluid" (click)="location.back()">
+                        {{"Volver atrás"|translate|phrasecase}}
+                    </button>
+                    <button mat-button type="button" class="secondary fluid" routerlink="/home">
+                        {{"Ir al inicio"|translate|phrasecase}}
+                    </button>
+
+                </div>
+
+                <div class="desc">
+                    <div class="caption">
+                        <small class="version">
+                            {{"Versión" | translate |titlecase}} {{VERSION}}
+                        </small>
+                        <small>{{"Todos los derechos reservados a"|translate|phrasecase}}
+                            <strong>{{APP_NAME}}</strong>
+                        </small>
+                        <a href="{{DEVELOPER_LINK}}">{{"Desarrollado por"| translate |phrasecase}}
+                            <strong>{{DEVELOPER}}</strong></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

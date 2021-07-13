@@ -1,0 +1,107 @@
+<div class="coky-container">
+  <div class="login">
+    <section class="container backgrounds-container">
+      <div class="overlay">
+        <div class="gradient"></div>
+      </div>
+    </section>
+
+    <div class="login-container">
+
+      <div class="desc">
+        <a href="" class="logo" vanilla-tilt data-tilt-max="30" data-tilt-scale="1.4" ilt-speed="300"
+          data-tilt-perspective="500">
+          <img src="assets/built-in/images/favicon.png" alt="logo ">
+        </a>
+
+        <div class="caption">
+          <small class="version">
+            {{"Versión" | translate |titlecase}} {{VERSION}}
+          </small>
+          <small>{{"Todos los derechos reservados a"|translate|phrasecase}}
+            <strong>{{APP_NAME}}</strong>
+          </small>
+          <a href="{{DEVELOPER_LINK}}">{{"Desarrollado por"|translate|phrasecase}}
+            <strong>{{DEVELOPER}}</strong></a>
+        </div>
+      </div>
+
+
+
+      <form class="login-form" [formGroup]="form" (ngSubmit)="login($event)">
+
+        <div class="desc">
+          <h1 class="ui header">
+            {{TITLE|titlecase}}
+          </h1>
+
+          <a href="" class="logo" vanilla-tilt data-tilt-max="30" data-tilt-scale="1.4" ilt-speed="300"
+            data-tilt-perspective="500">
+            <img src="assets/built-in/images/favicon.png" alt="logo">
+          </a>
+        </div>
+
+        <div class="actions generic-loader" *ngIf="loading">
+          <mat-spinner></mat-spinner>
+        </div>
+
+        <div class="actions" *ngIf="!loading">
+          <h1 class="ui header">
+            {{TITLE|titlecase}}
+          </h1>
+
+          <div class="field">
+            <label>Nombre de usuario</label>
+            <input type="text" formControlName="username" placeholder="Nombre de usuario"
+              pattern="^[a-zA-Z]+([a-zA-Z]+[0-9]{0,4})*">
+            <small class="error"
+              *ngIf="form.get('username').dirty && (form.get('username').hasError('required')||form.get('username').hasError('pattern'))"
+              [@hidenHeightAnimation]>
+              {{"Digite un nombre de usuario válido"|translate: LANG_CATEGORY| phrasecase}}
+            </small>
+          </div>
+
+          <div class="field">
+            <label>Contraseña</label>
+            <input type="password" formControlName="password" placeholder="Contraseña">
+            <small class="error"
+              *ngIf="form.get('password').dirty && (form.get('password').hasError('required')||form.get('password').hasError('pattern'))"
+              [@hidenHeightAnimation]>
+              {{"Digite una contraseña válida"|translate: LANG_CATEGORY| phrasecase}}
+            </small>
+          </div>
+
+
+          <button mat-button type="submit" class="primary fluid">
+            {{"Ingresar" | translate : LANG_CATEGORY |
+            phrasecase}}
+          </button>
+
+          <a [routerLink]="['../help']">
+            {{"Ayuda para ingresar" | translate : LANG_CATEGORY | phrasecase}}
+          </a>
+          <br>
+          <a *ngIf="CAN_REGISTER" [routerLink]="['../register']">
+            {{"Registrarse" | translate : LANG_CATEGORY |
+            phrasecase}}
+          </a>
+        </div>
+
+        <div class="desc">
+          <div class="caption">
+            <small class="version">
+              {{"Versión" | translate |titlecase}} {{VERSION}}
+            </small>
+            <small>{{"Todos los derechos reservados a"|translate|phrasecase}}
+              <strong>{{APP_NAME}}</strong>
+            </small>
+            <a href="{{DEVELOPER_LINK}}">{{"Desarrollado por"| translate |phrasecase}}
+              <strong>{{DEVELOPER}}</strong></a>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+</div>

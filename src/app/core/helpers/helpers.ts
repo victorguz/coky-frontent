@@ -1,9 +1,9 @@
-import {  Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import * as bcrypt from 'bcryptjs';
-import { Title } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { CokyDialogData, CokyHelperDialogComponent } from './classes/dialog.component';
 import { getConfig } from 'src/app/config/default.config';
 
@@ -15,7 +15,8 @@ export class Helpers {
   constructor(private router: Router,
     private _snackBar: MatSnackBar,
     private _dialog: MatDialog,
-    private _title: Title) { }
+    private _title: Title,
+    private _meta: Meta) { }
 
   public setTitle(subTitle: string = "", stringCase: StringCaseType = StringCaseType.TITLECASE) {
     subTitle = subTitle.trim();
@@ -29,6 +30,26 @@ export class Helpers {
   public getTitle() {
     return this._title.getTitle()
   }
+/**
+ * Set a meta tag element on the head of current HTML
+ * @param name 
+ * @param content 
+ * @param stringCase 
+ */
+  public setMetaTag(name: string = "", content: string = "", stringCase: StringCaseType = StringCaseType.TITLECASE) {
+    name = name.trim();
+    content = content.trim();
+    if (name.length > 0 && content.length > 0) {
+      const current = this._meta.getTag(`name='${name}'`)
+      if(current){
+        current.setAttribute("content",content)
+      }else{
+        this._meta.addTag({ name, content })
+      }
+      this._title.setTitle(Helpers.toStringCase(`${name} | ${getConfig("app_title")}`, stringCase))
+    }
+  }
+
   /**
    * Pone mayusculas o minusculas en un string usando como
    * selector un parámetro único de la enumeración StringCaseType
@@ -45,18 +66,21 @@ export class Helpers {
     }
   }
 
-  /**
+  /**{
+   * }
    * Pone en mayusculas la inicial de cada palabra y en minusculas el resto de las letras en una cadena.
    * @param cad
    * @param split
    */
   public static toTitleCase(cad: string, split: string = " ") {
-    cad = cad.trim()
+    cad = cad.toLocaleLowerCase().trim()
     if (cad.length > 0) {
-      let arr = cad.toLocaleLowerCase().split(split);
+      let arr = cad.split(split);
       cad = "";
       arr.forEach(e => {
-        cad += e[0].toUpperCase() + e.substring(1) + " ";
+        if (e) {
+          cad += e[0].toUpperCase() + e.substring(1) + " ";
+        }
       });
     }
     return cad;
@@ -70,7 +94,8 @@ export class Helpers {
     return this.toTitleCase(cad, ".");
   }
   /**
-   * Verifica si la cadena hace match con el regex
+   * Verifica si la cadena{
+   * } hace match con el regex
    * @param cadena
    * @param regex
    */

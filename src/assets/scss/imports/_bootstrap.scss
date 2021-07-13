@@ -1,0 +1,185 @@
+.coky-container {
+  .fluid {
+    width: 100%;
+  }
+
+  .bg-white {
+    background-color: white !important;
+  }
+
+  .bg-primary {
+    background-color: $primary-color !important;
+  }
+
+  .bg-secondary {
+    background-color: $secondary-color !important;
+  }
+
+  .bg-alert {
+    background-color: $alert-color !important;
+  }
+
+  .bg-success {
+    background-color: $success-color !important;
+  }
+
+  .bg-danger {
+    background-color: $danger-color !important;
+  }
+
+  .bg-dark {
+    background-color: $dark-color !important;
+  }
+
+  .bg-gray {
+    background-color: $gray-color !important;
+  }
+
+  .text-white {
+    color: white;
+  }
+
+  .text-primary {
+    color: $primary-color !important;
+  }
+
+  .text-secondary {
+    color: $secondary-color !important;
+  }
+
+  .text-alert {
+    color: $alert-color !important;
+  }
+
+  .text-success {
+    color: $success-color !important;
+  }
+
+  .text-danger {
+    color: $danger-color !important;
+  }
+
+  .text-dark {
+    color: $dark-color !important;
+  }
+
+  .text-gray {
+    color: $gray-color !important;
+  }
+
+  .text-left {
+    text-align: left !important;
+  }
+
+  .text-center {
+    text-align: center !important;
+  }
+
+  .text-right {
+    text-align: right !important;
+  }
+
+  .text-justified {
+    text-align: justify !important;
+  }
+
+  .rounded {
+    border-radius: $rounded !important;
+  }
+
+  .nowrap {
+    flex-flow: nowrap;
+    word-wrap: normal;
+    word-break: keep-all;
+    white-space: nowrap;
+  }
+
+  .noselection {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+  }
+
+  .gap {
+    gap: 0.5rem;
+  }
+
+  .gap-1 {
+    gap: 1rem;
+  }
+
+  .gap-2 {
+    gap: 2rem;
+  }
+
+  .gap-3 {
+    gap: 3rem;
+  }
+
+  .gap-4 {
+    gap: 4rem;
+  }
+
+  .gap-5 {
+    gap: 5rem;
+  }
+
+  .text-left {
+    text-align: left;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .field {
+    display: flex;
+    flex-flow: column;
+    padding: 5px;
+    width: 100%;
+
+    transition: all ease 1s !important;
+
+    label {
+      font-weight: $font-semibold;
+      margin-bottom: 5px;
+    }
+
+    .error {
+      transition: all ease 1s;
+      color: $danger-color;
+      padding: 5px;
+      padding-bottom: 0;
+    }
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .flex-column {
+    @extend .flex;
+    flex-flow: column;
+  }
+
+  .centered {
+    align-items: center;
+  }
+
+  .justified-center {
+    justify-content: center;
+  }
+}
